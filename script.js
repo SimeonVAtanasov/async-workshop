@@ -19,6 +19,8 @@
       imageKey: "url",
     },
   ];
+
+  // utils
   const getElById = (id) => document.getElementById(id);
   const createEl = (type) => document.createElement(type);
   const container = getElById("container");
@@ -32,10 +34,13 @@
     img.height = 600;
     return img;
   };
+
+  // getting the elements
   //   const getFoxBtn = getElById("getFoxBtn");
   //   const getDogBtn = getElById("getDogBtn");
   const input = getElById("input");
 
+  // gets random api and performs fetch
   const generateAiImage = async () => {
     const index = Math.ceil(Math.random() * 3) - 1;
     const randomApi = apiList[index];
@@ -51,6 +56,8 @@
 
     manageContainer(image);
   };
+
+  //debounce
   let idHolder;
 
   const handeInputChange = (e) => {
@@ -58,6 +65,7 @@
     idHolder = setTimeout(generateAiImage, 1000);
   };
 
+  //event listeners
   input.addEventListener("input", handeInputChange);
 
   //   getFoxBtn.addEventListener("click", () => {
